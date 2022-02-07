@@ -1,16 +1,17 @@
+import { useState } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Card from 'components/Card'
 import { data } from 'data'
 import styles from 'styles/Home.module.scss'
+import FilterTagList from 'components/FilterTagList'
 
 const Home: NextPage = () => {
-  const filterTags = ['JavaScript', 'CSS'].sort()
+  const [filterTags, setFilterTags] = useState<string[]>([])
 
   const filteredData = data.filter((d) => {
     const tags = [d.role, d.level, ...d.languages, ...d.tools]
-    const commonTags = tags.filter((tag) => filterTags.includes(tag)).sort()
-    return JSON.stringify(commonTags) === JSON.stringify(filterTags)
+    return filterTags.every((filterTag) => tags.includes(filterTag))
   })
 
   console.log(filteredData)
@@ -26,8 +27,9 @@ const Home: NextPage = () => {
         <h1 className='visually-hidden'>Job Listings</h1>
       </header>
       <main className={styles.main}>
-        {data.map((d) => (
-          <Card key={d.id} {...d} />
+        <FilterTagList {...{ filterTags, setFilterTags }} />
+        {filteredData.map((d) => (
+          <Card key={d.id} {...{ d, setFilterTags }} />
         ))}
       </main>
     </>

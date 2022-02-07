@@ -1,9 +1,15 @@
 import Image from 'next/image'
+import { Dispatch, SetStateAction } from 'react'
 import styles from 'styles/Card.module.scss'
 import { Data } from 'types'
 import TagList from './TagList'
 
-const Card = (d: Data) => {
+interface Props {
+  d: Data
+  setFilterTags: Dispatch<SetStateAction<string[]>>
+}
+
+const Card = ({ d, setFilterTags }: Props) => {
   return (
     <article className={`${styles.card} /*${styles.border_none}*/`}>
       <div className={styles.image}>
@@ -20,7 +26,10 @@ const Card = (d: Data) => {
         <p>{d.contract}</p>
         <p>{d.location}</p>
       </div>
-      <TagList tags={[d.role, d.level, ...d.languages, ...d.tools]} />
+      <TagList
+        tags={[d.role, d.level, ...d.languages, ...d.tools]}
+        setFilterTags={setFilterTags}
+      />
     </article>
   )
 }
