@@ -1,0 +1,86 @@
+.card {
+  background-color: #fff;
+  margin-top: 32px;
+  padding: 18px;
+  padding-top: 0;
+  padding-bottom: 24px;
+  display: grid;
+  gap: 8px;
+  border-left: $primary 5.5px solid;
+  border-radius: 5px;
+  box-shadow: 4px 8px 25px -10px rgba(0, 0, 0, 0.18);
+
+  h2 {
+    color: $very-dark-grayish-cyan;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: -0.035em;
+  }
+}
+
+.image {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  margin-top: -24px;
+}
+
+.first {
+  display: flex;
+  align-items: center;
+  margin-bottom: 3px;
+
+  :not(:nth-child(1)) {
+    color: #fff;
+    border-radius: 20px;
+    padding: 8px;
+    font-size: rem(11);
+    height: 24px;
+  }
+
+  :nth-of-type(1) {
+    color: $primary;
+    font-weight: 700;
+    font-size: rem(13);
+    margin-right: 6px;
+  }
+
+  :nth-of-type(2) {
+    background-color: $primary;
+    margin-left: 11px;
+  }
+
+  :nth-of-type(3) {
+    margin-left: 8px;
+    background-color: $very-dark-grayish-cyan;
+  }
+}
+
+.info {
+  display: flex;
+  gap: 19px;
+  border-bottom: 1px solid #c0c2c1;
+  color: $dark-grayish-cyan;
+  padding-bottom: 18px;
+  font-size: rem(14);
+  margin-top: 7px;
+  letter-spacing: -0.035em;
+
+  @mixin dot($right: auto, $left: auto) {
+    content: '.';
+    font-size: rem(30);
+    color: #aaa;
+    position: absolute;
+    inset: -19px $right auto $left;
+  }
+
+  :nth-of-type(2) {
+    position: relative;
+    &::before {
+      @include dot($left: -15px);
+    }
+    &::after {
+      @include dot($right: -15px);
+    }
+  }
+}

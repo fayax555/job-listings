@@ -1,0 +1,19 @@
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: rem(13);
+  padding-top: 8px;
+
+  li {
+    background-color: $light-grayish-cyan-filter;
+    color: $primary;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    border-radius: 5px;
+    font-weight: 700;
+    letter-spacing: -0.035em;
+  }
+}
