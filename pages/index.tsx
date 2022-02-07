@@ -1,9 +1,20 @@
-import Card from 'components/Card'
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import Card from 'components/Card'
+import { data } from 'data'
 import styles from 'styles/Home.module.scss'
 
 const Home: NextPage = () => {
+  const filterTags = ['JavaScript', 'CSS'].sort()
+
+  const filteredData = data.filter((d) => {
+    const tags = [d.role, d.level, ...d.languages, ...d.tools]
+    const commonTags = tags.filter((tag) => filterTags.includes(tag)).sort()
+    return JSON.stringify(commonTags) === JSON.stringify(filterTags)
+  })
+
+  console.log(filteredData)
+
   return (
     <>
       <Head>
@@ -15,7 +26,9 @@ const Home: NextPage = () => {
         <h1 className='visually-hidden'>Job Listings</h1>
       </header>
       <main className={styles.main}>
-        <Card />
+        {data.map((d) => (
+          <Card key={d.id} {...d} />
+        ))}
       </main>
     </>
   )

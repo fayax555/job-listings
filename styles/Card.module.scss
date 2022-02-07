@@ -8,7 +8,7 @@
   gap: 8px;
   border-left: $primary 5.5px solid;
   border-radius: 5px;
-  box-shadow: 4px 8px 25px -10px rgba(0, 0, 0, 0.18);
+  box-shadow: $shadow;
 
   h2 {
     color: $very-dark-grayish-cyan;
@@ -82,5 +82,32 @@
     &::after {
       @include dot($right: -15px);
     }
+  }
+}
+
+.border_none {
+  border-left: rgba(0, 0, 0, 0) 5.5px solid;
+}
+
+@media (min-width: 800px) {
+  .card {
+    display: grid;
+    grid-template-columns: 1fr 2fr 3fr;
+    align-items: center;
+    padding: 10px;
+
+    h2 {
+      grid-column: 2;
+    }
+  }
+
+  .image {
+    grid-row: 1 / span 3;
+    margin-top: revert;
+  }
+
+  .info {
+    border: none;
+    grid-column: 2;
   }
 }

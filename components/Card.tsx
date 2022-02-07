@@ -1,27 +1,26 @@
 import Image from 'next/image'
 import styles from 'styles/Card.module.scss'
-import Tags from './Tags'
+import { Data } from 'types'
+import TagList from './TagList'
 
-interface Props {}
-
-const Card = () => {
+const Card = (d: Data) => {
   return (
-    <article className={styles.card}>
+    <article className={`${styles.card} /*${styles.border_none}*/`}>
       <div className={styles.image}>
-        <Image src='/images/photosnap.svg' layout='fill' alt='' />
+        <Image src={d.logo} layout='fill' alt='' />
       </div>
       <div className={styles.first}>
-        <p>Photosnap</p>
-        <p>NEW!</p>
-        <p>FEATURED</p>
+        <p>{d.company}</p>
+        {d.new && <p>NEW!</p>}
+        {d.featured && <p>FEATURED</p>}
       </div>
-      <h2>Senior Frontend Developer</h2>
+      <h2>{d.position}</h2>
       <div className={styles.info}>
-        <p>1d ago</p>
-        <p>Full Time</p>
-        <p>USA only</p>
+        <p>{d.postedAt}</p>
+        <p>{d.contract}</p>
+        <p>{d.location}</p>
       </div>
-      <Tags />
+      <TagList tags={[d.role, d.level, ...d.languages, ...d.tools]} />
     </article>
   )
 }

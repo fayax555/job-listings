@@ -17,3 +17,10 @@
     letter-spacing: -0.035em;
   }
 }
+
+@media (min-width: 800px) {
+  .tags {
+    grid-row: 1 / span 3;
+    grid-column: 3;
+  }
+}
