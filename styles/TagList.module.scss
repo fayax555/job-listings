@@ -15,6 +15,7 @@
     font-weight: 700;
     letter-spacing: -0.035em;
     cursor: pointer;
+    transition: background-color 0.15s ease;
 
     &:hover {
       background-color: $primary;

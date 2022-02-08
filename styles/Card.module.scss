@@ -18,10 +18,10 @@
 
 .card {
   max-width: 1110px;
-  margin: 0 auto;
+  width: 100%;
+  margin: 32px auto 0;
   background-color: #fff;
-  margin-top: 32px;
-  padding: 0 18px 24;
+  padding: 0 18px 24px;
   display: grid;
   gap: 8px;
   border-left: rgba(0, 0, 0, 0) 5.5px solid;
@@ -34,7 +34,7 @@
     font-size: 16px;
     letter-spacing: -0.035em;
     cursor: pointer;
-    transition: color 0.2s ease;
+    transition: color 0.15s ease;
 
     &:hover {
       color: $primary;
@@ -108,18 +108,16 @@
     align-items: center;
     justify-content: space-between;
     padding: 18px 34px;
-    margin-bottom: -7px;
-
-    h2 {
-      grid-column: 2;
-      font-size: rem(19);
-    }
 
     h2,
     .first,
     .info {
       grid-column: 3 / span 7;
       transform: translate(0, 4px);
+    }
+
+    h2 {
+      transform: translateY(6px);
     }
   }
 

@@ -10,9 +10,9 @@ const FilterTagList = ({ filterTags, setFilterTags }: Props) => {
   if (!filterTags.length) return null
 
   return (
-    <ul className={styles.wrapper}>
+    <div className={styles.wrapper}>
       {filterTags.map((item) => (
-        <li key={item}>
+        <div className={styles.button_wrapper} key={item}>
           <div>{item}</div>
           <button
             onClick={() => setFilterTags(filterTags.filter((f) => f !== item))}
@@ -25,9 +25,12 @@ const FilterTagList = ({ filterTags, setFilterTags }: Props) => {
               />
             </svg>
           </button>
-        </li>
+        </div>
       ))}
-    </ul>
+      <button onClick={() => setFilterTags([])} className={styles.clear_button}>
+        Clear
+      </button>
+    </div>
   )
 }
 
