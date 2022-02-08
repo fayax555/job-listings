@@ -8,16 +8,16 @@ interface Props {
 
 const TagList = ({ tags, setFilterTags }: Props) => {
   return (
-    <ul className={styles.tags}>
+    <div className={styles.tags}>
       {tags.map((item) => (
-        <li
+        <button
           key={item}
           onClick={() => setFilterTags((curr) => [...new Set([...curr, item])])}
         >
           {item}
-        </li>
+        </button>
       ))}
-    </ul>
+    </div>
   )
 }
 

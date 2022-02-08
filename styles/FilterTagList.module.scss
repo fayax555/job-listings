@@ -1,0 +1,25 @@
+.wrapper {
+  background-color: #fff;
+  display: flex;
+  padding: 15px 20px;
+  box-shadow: $shadow;
+  border-radius: 5px;
+
+  li {
+    background-color: $light-grayish-cyan-bg;
+    color: $primary;
+    display: flex;
+    padding: 0 5px;
+
+    button {
+      all: unset;
+      cursor: pointer;
+      background-color: $primary;
+      transition: background-color 0.2s ease;
+
+      &:hover {
+        background-color: $very-dark-grayish-cyan;
+      }
+    }
+  }
+}

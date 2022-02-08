@@ -1,12 +1,30 @@
+@mixin dot($right: auto, $left: auto) {
+  content: '.';
+  font-size: rem(30);
+  color: #aaa;
+  position: absolute;
+  inset: -19px $right auto $left;
+}
+
+@mixin dotBothSide($val) {
+  position: relative;
+  &::before {
+    @include dot($left: $val);
+  }
+  &::after {
+    @include dot($right: $val);
+  }
+}
+
 .card {
+  max-width: 1110px;
+  margin: 0 auto;
   background-color: #fff;
   margin-top: 32px;
-  padding: 18px;
-  padding-top: 0;
-  padding-bottom: 24px;
+  padding: 0 18px 24;
   display: grid;
   gap: 8px;
-  border-left: $primary 5.5px solid;
+  border-left: rgba(0, 0, 0, 0) 5.5px solid;
   border-radius: 5px;
   box-shadow: $shadow;
 
@@ -15,6 +33,12 @@
     font-weight: 700;
     font-size: 16px;
     letter-spacing: -0.035em;
+    cursor: pointer;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: $primary;
+    }
   }
 }
 
@@ -43,6 +67,7 @@
     font-weight: 700;
     font-size: rem(13);
     margin-right: 6px;
+    letter-spacing: -0.05em;
   }
 
   :nth-of-type(2) {
@@ -66,48 +91,61 @@
   margin-top: 7px;
   letter-spacing: -0.035em;
 
-  @mixin dot($right: auto, $left: auto) {
-    content: '.';
-    font-size: rem(30);
-    color: #aaa;
-    position: absolute;
-    inset: -19px $right auto $left;
-  }
-
   :nth-of-type(2) {
-    position: relative;
-    &::before {
-      @include dot($left: -15px);
-    }
-    &::after {
-      @include dot($right: -15px);
-    }
+    @include dotBothSide(-15px);
   }
 }
 
-.border_none {
-  border-left: rgba(0, 0, 0, 0) 5.5px solid;
+.border {
+  border-left: $primary 5.5px solid;
 }
 
 @media (min-width: 800px) {
   .card {
-    display: grid;
-    grid-template-columns: 1fr 2fr 3fr;
+    column-gap: 25px;
+    row-gap: 7px;
+    grid-template-columns: repeat(20, 1fr);
     align-items: center;
-    padding: 10px;
+    justify-content: space-between;
+    padding: 18px 34px;
+    margin-bottom: -7px;
 
     h2 {
       grid-column: 2;
+      font-size: rem(19);
+    }
+
+    h2,
+    .first,
+    .info {
+      grid-column: 3 / span 7;
+      transform: translate(0, 4px);
     }
   }
 
   .image {
     grid-row: 1 / span 3;
+    grid-column: 1 / span 2;
     margin-top: revert;
+    width: 88px;
+    height: 88px;
+  }
+
+  .first {
+    margin-top: 10px;
+
+    :nth-of-type(1) {
+      font-size: rem(15);
+    }
   }
 
   .info {
     border: none;
     grid-column: 2;
+    gap: 43px;
+
+    :nth-of-type(2) {
+      @include dotBothSide(-28px);
+    }
   }
 }

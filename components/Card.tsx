@@ -11,7 +11,7 @@ interface Props {
 
 const Card = ({ d, setFilterTags }: Props) => {
   return (
-    <article className={`${styles.card} /*${styles.border_none}*/`}>
+    <article className={`${styles.card} ${d.featured ? styles.border : ''}`}>
       <div className={styles.image}>
         <Image src={d.logo} layout='fill' alt='' />
       </div>
