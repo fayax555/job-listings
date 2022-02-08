@@ -109,6 +109,7 @@
     justify-content: space-between;
     padding: 18px 34px;
     margin-top: 32px;
+    margin-bottom: -8px;
 
     h2,
     .first,
@@ -119,10 +120,6 @@
 
     h2 {
       transform: translateY(6px);
-    }
-
-    &:not(:first-child) {
-      margin-top: 24px;
     }
   }
 
